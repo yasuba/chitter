@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Chitter</title>
+	<title>Shitter</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 	<% if current_user %>
-	Hello, <%= current_user.email %>
+	<aside>
+	Hello, <%= current_user.username %>
 		<form method="post" action="/sessions">
 			<input type="hidden" name="_method" value="delete">
 			<input type="submit" value="Sign out">
@@ -16,6 +18,7 @@
 			<%= flash[:notice] %>
 		</div>
 	<% end %>
+</aside>
 	<%= yield %>
 
 </body>

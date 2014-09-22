@@ -1,0 +1,99 @@
+body {
+	background-color: #7D3509;
+	font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+}
+
+h1 {
+	text-align: center;
+	/*margin-left: 17%;*/
+}
+
+aside {
+	position: absolute;
+	left: 80%;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	border: 2px solid black;
+	border-radius: 15px;
+	margin: 2% 0;
+	width: 90%;
+	padding: 1%;
+	background-color: #FF9933;
+}
+
+.login-buttons {
+	position: absolute;
+	left: 80%;
+	top: 5%;
+}
+
+.sub-head {
+	text-align: center;
+}
+
+.poop-header {
+	margin-left: 5%;
+}
+
+#new-peep {
+	text-align: center;
+	margin-top: 5%;
+}
+
+#new-peep input:first-child{
+	width: 50%;
+	border: none;
+	padding: 0.5em;
+}
+#new-peep input:nth-child(2) {
+	background-color: #FF9933;
+	font-weight: bold;
+	padding: 3px;
+	width: 5%;
+	font-size: 0.75em;
+}
+
+.post {
+	width: 60%;
+	margin-left: 3%;
+}
+
+.login {
+	display: inline-block;
+}
+
+.register {
+	display: inline-block;
+}
+
+.poo-pic {
+	margin-top: -9%;
+	margin-right: 27%;
+	float: right;
+}
+
+.poo-pic2 {
+	margin-top: -9%;
+	margin-left: 27%;
+	float: left;
+}
+
+.login-form {
+	float: left;
+	color: #000;
+	font-weight: bold;
+	margin-left: 35%;
+}
+
+.signup input{
+	margin-bottom: 3%;
+	margin-left: 5%;
+	float: left;
+	color: #000;
+	font-weight: bold;
+}

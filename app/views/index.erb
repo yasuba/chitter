@@ -1,18 +1,41 @@
-<h1>Yo! This is chitter.</h1>
+<h1>This is Shitter.</h1>
+<h2 class="sub-head">(Like Twitter, but shitter)</h2>
+<img class="poo-pic" src="./images/poop.png">
+<img class="poo-pic2" src="./images/poop.png">
 
-Latest Peeps:
+<% unless current_user %>
+	<aside class="login-buttons">
+		<form class="login" action="/sessions/new" method="get">
+			<button>Login</button>	
+		</form>
+		<form class="register" action="/users/new" method="get">
+			<button>Register</button>
+		</form>
+	</aside>
+<% end %>
 
-<ul>
-	<% @peeps.each do |peep| %>
-	<li><%= peep.content %></li>
-	<% end %>
-</ul>
-
+<% if current_user %>
 
 <div id="new-peep">
 	<form method="post" action="/peeps">
 		Post your status: <input type="text" name="content">
-		<input type="submit" value="Post">
+		<input type="button" value="Post">
 	</form>
 </div>
+
+<% end %>
+
+<h2 class="poop-header">Latest Poops:</h2>
+
+<ul class="list-peeps">
+	<% @peeps.each do |peep| %>
+	<li><%= "#{peep.content} - <a href='/?user=#{peep.user.id}'>#{peep.user.username}</a>"%></li>
+	<% end %>
+</ul>
+
+
+
+
+
+
 

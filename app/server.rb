@@ -12,13 +12,18 @@ set :session_secret, 'super secret'
 use Rack::Flash
 
 get '/' do
-	@peeps = Peep.all
+	if params[:user]
+		 @peeps = User.first(id: params[:user].to_i).peeps.sort{|a,b| b.timestamp <=> a.timestamp}
+	else
+		@peeps = Peep.all.sort{|a,b| b.timestamp <=> a.timestamp}
+	end
+	@session = session[:user_id]
 	erb :index
 end
 
 post '/peeps' do
 	content = params['content']
-	Peep.create(:content => content)
+	Peep.create(content: content, user: current_user, timestamp: Time.now )
 	redirect to('/')
 end
 
@@ -28,13 +33,16 @@ get '/users/new' do
 end
 
 post '/users' do
-	@user = User.new(:email => params[:email],
-				:password => params[:password])
+	@user = User.new(:name => params[:name],
+					 :username => params[:username],
+					 :email => params[:email],
+					 :password => params[:password],
+					 :password_confirmation => params[:password_confirmation])
 	if @user.save
 		session[:user_id] = @user.id
 		redirect to('/')
-	else
-		flash.now[:errors] = @user.errors.full_messages
+	else	
+		flash[:notice] = @user.errors.full_messages
 		erb :"users/new"
 	end
 end
@@ -44,8 +52,8 @@ get '/sessions/new' do
 end
 
 post '/sessions' do
-	email, password = params[:email], params[:password]
-	user = User.authenticate(email, password)
+	username, password = params[:username], params[:password]
+	user = User.authenticate(username, password)
 	if user
 		session[:user_id] = user.id
 		redirect to ('/')

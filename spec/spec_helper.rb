@@ -7,6 +7,7 @@ ENV["RACK_ENV"] = 'test' # because we need to know what database to work with
 require './app/server' 
 require 'database_cleaner'
 require 'capybara/rspec'
+require_relative 'features/helpers/session'
 
 Capybara.app = Sinatra::Application
 
@@ -26,6 +27,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
+  config.include SessionHelpers
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
