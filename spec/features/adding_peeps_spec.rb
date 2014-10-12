@@ -12,7 +12,7 @@ feature "User adds a peep" do
 		expect(peep.content).to eq("A string of fewer than 140 characters")
 	end
 
-	scenario 'when pooping we should see the username' do
+	scenario 'when peeping we should see the username' do
 		visit '/users/new'
 		sign_up
 		post_peep("A string of fewer than 140 characters")
