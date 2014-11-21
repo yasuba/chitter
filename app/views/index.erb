@@ -4,36 +4,34 @@
 <img class="poo-pic2" src="./images/poop.png">
 
 <% unless current_user %>
-	<aside class="login-buttons">
-		<form class="login" action="/sessions/new" method="get">
-			<button>Login</button>	
-		</form>
-		<form class="register" action="/users/new" method="get">
-			<button>Register</button>
-		</form>
-	</aside>
+  <aside class="login-buttons">
+    <form class="login" action="/sessions/new" method="get">
+      <button>Login</button>
+    </form>
+    <form class="register" action="/users/new" method="get">
+      <button>Register</button>
+    </form>
+  </aside>
 <% end %>
 
 <% if current_user %>
 
-<div id="new-peep">
-	<form method="post" action="/peeps">
-		Post your status: <input type="text" name="content">
-		<input type="button" value="Post">
-	</form>
-</div>
+  <div id="new-peep">
+    <form method="post" action="/peeps">
+      Post your status: <input type="text" name="content">
+      <button>Post</button>
+    </form>
+  </div>
 
 <% end %>
 
 <h2 class="poop-header">Latest Poops:</h2>
 
 <ul class="list-peeps">
-	<% @peeps.each do |peep| %>
-	<li><%= "#{peep.content} - <a href='/?user=#{peep.user.id}'>#{peep.user.username}</a>"%></li>
-	<% end %>
+  <% @peeps.each do |peep| %>
+  <li><%= "#{peep.content} - <a href='/?user=#{peep.user.id}'>#{peep.user.username}</a>"%></li>
+  <% end %>
 </ul>
-
-
 
 
 

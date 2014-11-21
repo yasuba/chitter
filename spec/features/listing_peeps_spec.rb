@@ -31,6 +31,7 @@ feature "User browses the list of peeps" do
     visit '/'
     click_link('yasuba')
     expect(page).not_to have_content('Tweet - stephen@test.com')
-    expect(page).to have_content('A status update of fewer than 140 characters - yasuba') 
+    expect(page).to have_content('A status update of fewer than 140 characters - yasuba')
   end
+
 end
