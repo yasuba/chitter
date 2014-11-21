@@ -25,3 +25,4 @@ feature "User adds a peep" do
     end
   end
 end
+
